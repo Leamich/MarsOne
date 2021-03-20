@@ -189,5 +189,99 @@ def register_unit():
         return 'Отправлено'
 
 
+@app.route('/choice/<planet_name>')
+def promote_planet(planet_name: str):
+    planet_name = planet_name.capitalize()
+    planet_data = {
+        'марс': ('https://korki.lol/wp-content/uploads/2017/10/mars.jpg',
+                 'red',
+                 'На марсе просыпаются самые замечательные идеи (все же читали Марсианин)',
+                 'Экология Марса — лучшее, что может иметь человек',
+                 'На Марсе есть вода!',
+                 'Red Planet звучит круто, у любого спроси'),
+        'меркурий': ('https://korki.lol/wp-content/uploads/2017/10/mercury.jpg',
+                     '#6E7F80',
+                     'Самая маленькая планета — самые маленькие проблемы',
+                     'Спутников нет, значит нет полнолуний. Прощайте, оборотни!',
+                     'Непредсказуемость орбиты — ежедневные сюрпризы (и не нужно праздников)',
+                     'Серый — хит сезона!'),
+        'нептун': ('https://korki.lol/wp-content/uploads/2017/10/neptun.jpg',
+                   '#2E6BB0',
+                   'Кольца! О да, все их любят!',
+                   'Мы думали, что это уже не планета, но оказалось, что это было про Плутон',
+                   'На этой планете вы не постареете на год (он здесь в 164 раза длиннее земного)',
+                   'Ветер — 260 м/с. Мы пока не придумали, в чём здесь плюс, но факт впечатляет'),
+        'уран': ('https://korki.lol/wp-content/uploads/2017/10/uranus.jpg',
+                 '#2E6BB0',
+                 'Это же второй Нептун! Получается, мы сможем организовать 2 колонизации Нептуна',
+                 'Любителям зимы здесь понравится! Ещё и мороженое можно взять',
+                 '27 спутников! После этой колонизации мы выделим вам по спутнику!',
+                 '7 планета от Солнца. 7 счастливое число, так что всё пройдёт на ура!'),
+        'сатурн': ('https://korki.lol/wp-content/uploads/2017/10/saturn.jpg',
+                   '#C7B293',
+                   'Нищие координаторы с Нептуна привлекали Вас своими кольцами? ХА!',
+                   '27 спутников? ХА! 62 — наше число!',
+                   'Планета по составу похожа на Солнце. Никто не хочет подзагореть?',
+                   'Все любят бассейны! Здесь почва имеет меньшую плотность, чем вода!')
+    }
+    if planet_name.lower() in planet_data.keys():
+        info = planet_data[planet_name.lower()]
+        return f'''<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+    <title>Наш выбор: {planet_name}</title>
+</head>
+<body>
+<div class="row g-2">
+    <div class="col-12">
+        <h1 style="color: {info[1]};" align="center">Жди нас, {planet_name}!</h1>
+    </div>
+
+    <div class="col-5">
+    <img src="{info[0]}" alt="Марс" height="80%"
+        style="margin-left: 10%">
+    </div>
+
+    <div class="col-5 align-self-center">
+    <div class="alert alert-primary" role="alert">
+        {info[2]}
+    </div>
+    <div class="alert alert-success" role="alert">
+        {info[3]}
+    </div>
+    <div class="alert alert-danger" role="alert">
+        {info[4]}
+    </div>
+    <div class="alert alert-dark" role="alert">
+        {info[5]}
+    </div>
+    </div>
+</div>
+</body>
+</html>'''
+    else:
+        return '''<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+    <title>Планета не найдена</title>
+</head>
+<body>
+    Увы, на эту планету мы переезжать не планируем. 
+    <br>
+    <a href="/choice/Марс" class="btn btn-outline-danger" role="button">Перейти к Марсу</a>
+</body>
+</html>'''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
