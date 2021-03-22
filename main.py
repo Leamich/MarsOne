@@ -292,27 +292,8 @@ def promote_planet(planet_name: str):
 
 @app.route('/results/<nickname>/<int:level>/<float:rating>')
 def show_results(nickname, level, rating):
-    return f'''<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-        crossorigin="anonymous">
-    <title>Ваш билет на Марс!</title>
-</head>
-<body>
-    <div style="margin: 5%;">
-    <h1>РЕЗУЛЬТАТЫ ОТБОРА</h1>
-    <h3>{nickname}, на данный момент вы прошли на {level} этап</h3>
-    <div class="alert alert-info" role="alert">Ваш рейтинг: {rating}!</div>
-    <div class="alert alert-success" role="alert">Надеемся, Вас удовлетворили результаты<br>
-    <small class="text-muted">(хотя у нас конкурс 1000 человек на место,
-        так что вряд ли результаты хорошие)</small></div>
-    </div>
-</body>
-</html>'''
+    return render_template('show_results.html', title='Ваш билет на Марс!',
+                           rating=rating, level=level, nickname=nickname)
 
 
 @app.route('/training/<prof>')
