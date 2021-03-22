@@ -205,12 +205,13 @@ def promote_planet(planet_name: str):
                  'Экология Марса — лучшее, что может иметь человек',
                  'На Марсе есть вода!',
                  'Red Planet звучит круто, у любого спроси'),
-        'меркурий': ('https://korki.lol/wp-content/uploads/2017/10/mercury.jpg',
-                     '#6E7F80',
-                     'Самая маленькая планета — самые маленькие проблемы',
-                     'Спутников нет, значит нет полнолуний. Прощайте, оборотни!',
-                     'Непредсказуемость орбиты — ежедневные сюрпризы (и не нужно праздников)',
-                     'Серый — хит сезона!'),
+        'меркурий': (
+            'https://korki.lol/wp-content/uploads/2017/10/mercury.jpg',
+            '#6E7F80',
+            'Самая маленькая планета — самые маленькие проблемы',
+            'Спутников нет, значит нет полнолуний. Прощайте, оборотни!',
+            'Непредсказуемость орбиты — ежедневные сюрпризы (и не нужно праздников)',
+            'Серый — хит сезона!'),
         'нептун': ('https://korki.lol/wp-content/uploads/2017/10/neptun.jpg',
                    '#2E6BB0',
                    'Кольца! О да, все их любят!',
@@ -312,6 +313,13 @@ def show_results(nickname, level, rating):
     </div>
 </body>
 </html>'''
+
+
+@app.route('/training/<prof>')
+def training_scheme(prof: str):
+    return render_template('profession_select.html', title=prof.capitalize(),
+                           engineer_work=('инженер' in prof.lower()) or
+                                         ('строитель' in prof.lower()))
 
 
 if __name__ == '__main__':
