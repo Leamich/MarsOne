@@ -148,5 +148,14 @@ def emergency_access():
         return redirect('/index')
 
 
+@app.route('/distribution')
+def room_distribute():
+    participants_list = ('Ридли Скотт', 'Энди Уир', 'Марк Уотни',
+                         'Венката Капур', 'Тедди Сандерс', 'Шон Бин')
+    return render_template('room_distribute.html',
+                           title='Расселение по каютам',
+                           participants_list=participants_list)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
