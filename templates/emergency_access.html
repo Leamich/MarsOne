@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content%}
+<style>
+    div {
+        margin: 1% 0%;
+    }
+</style>
+
+<img src="static/img/mars_logo.png" style="float: left; padding-right: 1%;">
+<h2>Аварийный доступ</h2>
+<form method="post">
+    <div class="form-floating g-2">
+        <input type="text" class="form-control" id="id_first">
+        <label for="id_first">ID астронавта</label>
+    </div>
+    <div class="form-floating g-2">
+        <input type="password" class="form-control" id="password_first">
+        <label for="password_first">Пароль астронавта</label>
+    </div>
+
+    <div class="form-floating g-2">
+        <input type="text" class="form-control" id="id_second">
+        <label for="id_second">ID управляющего</label>
+    </div>
+    <div class="form-floating g-2">
+        <input type="password" class="form-control" id="password_second">
+        <label for="password_second">Пароль управляющего</label>
+    </div>
+    <button type="submit" class="btn btn-danger">Отправить</button>
+</form>
+{% endblock %}

@@ -7,7 +7,7 @@ PROF_LIST = ('Инженер-исследователь',
              'Инженер по радиацинной защите',
              'Врач', 'Экзобиолог')
 
-answer = None
+answer = {}
 app = Flask(__name__)
 
 
@@ -133,10 +133,19 @@ def list_prof(list_type):
 @app.route('/answer')
 @app.route('/auto_answer')
 def auto_answer():
-    if answer is None:
+    if answer == {}:
         return redirect('/astronaut_selection')
     else:
         return render_template('auto_answer.html', title='Анкета', **answer)
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def emergency_access():
+    if request.method == 'GET':
+        return render_template('emergency_access.html',
+                               title='Аварийный доступ')
+    else:
+        return redirect('/index')
 
 
 if __name__ == '__main__':
