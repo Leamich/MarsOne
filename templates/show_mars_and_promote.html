@@ -1,0 +1,28 @@
+{% "extends base.html" %}
+
+{% block content %}
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+    <h1>Жди нас, Марс</h1>
+    <img src="static/img/mars.png" alt="Красивая картинка Марса"
+         width=200 height=200>
+
+    <div class="alert alert-dark" role="alert">
+        Человечество вырастает из детства
+    </div>
+    <div class="alert alert-success" role="alert">
+        Человечеству мала планета
+    </div>
+    <div class="alert alert-dark" role="alert">
+        Мы сделаем обитаемыми безжизненные планеты
+    </div>
+    <div class="alert alert-warning" role="alert">
+        И начнём с Марса!
+    </div>
+    <div class="alert alert-danger" role="alert">
+        Присоединяйся!
+    </div>
+{% endblock %}

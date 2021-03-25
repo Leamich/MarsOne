@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if planet_exists %}
 <div class="row g-2">
     <div class="col-12">
-        <h1 style="color: {info[1]};" align="center">Жди нас, {planet_name}!</h1>
+        <h1 style="color: {info[1]};" align="center">Жди нас, {{ planet_name }}!</h1>
     </div>
 
     <div class="col-7">
-    <img src="{info[0]}" alt="Марс"
+    <img src="{{ info[0] }}" alt="Марс"
         style="margin-left: 10%">
     </div>
 
@@ -16,14 +17,19 @@
         {info[2]}
     </div>
     <div class="alert alert-success" role="alert">
-        {info[3]}
+        {{ info[3] }}
     </div>
     <div class="alert alert-danger" role="alert">
-        {info[4]}
+        {{ info[4] }}
     </div>
     <div class="alert alert-dark" role="alert">
-        {info[5]}
+        {{ info[5] }}
     </div>
     </div>
 </div>
+{% else %}
+    Увы, на эту планету мы переезжать не планируем.
+    <br>
+    <a href="/choice/Марс" class="btn btn-outline-danger" role="button">Перейти к Марсу</a>
+{% endif %}
 {% endblock %}
