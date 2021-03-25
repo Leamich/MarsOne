@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="static/css/answer_header.css">
+{% endblock %}
+
+{% block content %}
+Фамилия: <strong>{{ surname }}</strong> <br>
+Имя: <strong>{{ name }}</strong> <br>
+Образование: <strong>{{ education }}</strong> <br>
+Профессия: <strong>{{ profession }}</strong> <br>
+Пол: <strong>{{ sex }}</strong> <br>
+Мотивация: <strong>{{ motivation }}</strong> <br>
+Готовы остаться на Марсе? <strong>{{ ready }}</strong>
+{% endblock %}

@@ -1,4 +1,5 @@
-from flask import Flask, url_for, request, render_template
+from flask import Flask, url_for, request, render_template,\
+    redirect
 
 PROF_LIST = ('Инженер-исследователь',
              'Пилот', 'Строитель', 'Метеоролог',
@@ -6,6 +7,7 @@ PROF_LIST = ('Инженер-исследователь',
              'Инженер по радиацинной защите',
              'Врач', 'Экзобиолог')
 
+answer = None
 app = Flask(__name__)
 
 
@@ -51,11 +53,13 @@ def show_mars_and_promote():
 
 @app.route('/astronaut_selection', methods=['POST', 'GET'])
 def register_unit():
+    global answer
+
     if request.method == 'GET':
         return render_template('register_unit.html', title='Отбор кандидатов')
     elif request.method == 'POST':
-        print(request.form['name'])
-        return 'Отправлено'
+        answer = request.form
+        return redirect('/answer')
 
 
 @app.route('/choice/<planet_name>')
@@ -124,6 +128,15 @@ def list_prof(list_type):
                                professions=PROF_LIST)
     else:
         return 'Неверный параметр списка'
+
+
+@app.route('/answer')
+@app.route('/auto_answer')
+def auto_answer():
+    if answer is None:
+        return redirect('/astronaut_selection')
+    else:
+        return render_template('auto_answer.html', title='Анкета', **answer)
 
 
 if __name__ == '__main__':

@@ -1,19 +1,23 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<link rel="stylesheet" href="static/css/login_form.css">
+{% endblock %}
+
 {% block content %}
     <h1 align="center">Анкета претендента</h1>
     <h3 align="center">на участие в миссии</h3>
     <form class="login_form" method="post" enctype="multipart/form-data">
         <div class="row g-2">
             <div class="col-6">
-                <input type="text" class="form-control" placeholder="Фамилия">
+                <input type="text" class="form-control" placeholder="Фамилия" name="surname">
             </div>
             <div class="col-6">
-                <input type="text" class="form-control" placeholder="Имя">
+                <input type="text" class="form-control" placeholder="Имя" name="name">
             </div>
             <div class="col-12">
                 <label>Какое у вас образование?</label>
-                <select class="form-select">
+                <select class="form-select" name="education">
                     <option>Начальное</option>
                     <option selected>Среднее</option>
                     <option>Высшее</option>
@@ -23,42 +27,42 @@
                 <label>Какими профессиями вы владеете?</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality" id="spec1"
+                <input class="form-check-input" type="checkbox" name="profession" id="spec1"
                        value="Инженер-исследователь"/>
                 <label class="form-check-label" for="spec1">Инженер-исследователь</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec2" value="Пилот"/>
                 <label class="form-check-label" for="spec2">Пилот</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec3" value="Строитель"/>
                 <label class="form-check-label" for="spec3">Строитель</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec4" value="Метеоролог"/>
                 <label class="form-check-label" for="spec4">Метеоролог</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec5" value="Инженер по жизнеобеспечению"/>
                 <label class="form-check-label" for="spec5">Инженер по жизнеобеспечению</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec6" value="Инженер по радиацинной защите"/>
                 <label class="form-check-label" for="spec6">Инженер по радиацинной защите</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec7" value="Врач"/>
                 <label class="form-check-label" for="spec7">Врач</label>
                 <br>
 
-                <input class="form-check-input" type="checkbox" name="speciality"
+                <input class="form-check-input" type="checkbox" name="profession"
                        id="spec8" value="Экзобиолог"/>
                 <label class="form-check-label" for="spec8">Экзобиолог</label>
                 <br>
@@ -67,17 +71,17 @@
                 <label>Укажите ваш пол</label>
                 <br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male"/>
+                    <input class="form-check-input" type="radio" name="sex" id="male" value="male"/>
                     <label class="form-check-label" for="male">Мужской</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="female"/>
+                    <input class="form-check-input" type="radio" name="sex" id="female" value="female"/>
                     <label class="form-check-label" for="female">Женский</label>
                 </div>
             </div>
             <div class="col-12">
                 <label>Почему вы хотите принять участие в миссии?</label>
-                <textarea cols=50></textarea>
+                <textarea cols=50 name="motivation"></textarea>
             </div>
             <div class="col-12">
                 <label>Приложите фотографию</label>
@@ -85,7 +89,7 @@
             </div>
             <div class="col-12">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="yes" id="areyouready"/>
+                <input class="form-check-input" type="checkbox" value="True" id="areyouready" name="ready"/>
                 <label class="form-check-label" for="areyouready">Готовы ли остаться на Марсе?</label>
             </div>
             </div>
